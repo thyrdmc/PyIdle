@@ -85,14 +85,32 @@ menuBar.add_cascade(label='Run', menu = runBar)
 
 editBar = Menu(menuBar, tearoff=0)  
 editBar.add_command(label="Undo")  
+editBar.add_command(label="Redo")
   
 editBar.add_separator()  
   
-editBar.add_command(label="Cut")  
-editBar.add_command(label="Copy")  
-editBar.add_command(label="Paste")  
+editBar.add_command(label="Cut", \
+                    accelerator="Ctrl+X", \
+                    command=lambda: \
+                        window.focus_get().event_generate('<<Cut>>'))  
+
+editBar.add_command(label="Copy", \
+                    accelerator="Ctrl+C", \
+                    command=lambda: \
+                        window.focus_get().event_generate('<<Copy>>'))  
+
+editBar.add_command(label="Paste", \
+                    accelerator="Ctrl+V", \
+                    command=lambda: \
+                        window.focus_get().event_generate('<<Paste>>'))  
+
 editBar.add_command(label="Delete")  
-editBar.add_command(label="Select All")  
+
+editBar.add_command(label="Select All", \
+                    accelerator="Ctrl+A", \
+                    command=lambda: \
+                        window.focus_get().event_generate('<<SelectAll>>'))  
+
 menuBar.add_cascade(label="Edit", menu=editBar)  
 
 helpBar = Menu(menuBar, tearoff=0)  
