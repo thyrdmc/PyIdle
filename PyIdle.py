@@ -48,7 +48,7 @@ def openFile():
         global filePath
         filePath = path
 
-"""Saving the current file as a new file."""
+""" Saving the current file as a new file. """
 def saveFile():
     global filePath
     if filePath =='':
